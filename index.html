@@ -40,12 +40,19 @@
             border-radius: 50%;
         }
 
+        .color-label {
+            position: absolute;
+            top: 10px;
+            left: 50px;
+            font-size: 14px;
+        }
+
         .player:first-child {
-            background-color: #ffffff; /* Rosso chiaro */
+            background-color: #ffffff;
         }
 
         .player:last-child {
-            background-color: #ffffff; /* Azzurro chiaro */
+            background-color: #ffffff;
         }
 
         .counter {
@@ -87,6 +94,7 @@
 
     <div class="player" id="player1">
         <input type="color" class="color-picker" onchange="changeBackgroundColor('player1', this.value)">
+        <span class="color-label">Colore sfondo</span>
         <h2 contenteditable="true">Giocatore 1</h2>
         <div class="counter" id="counter1">0</div>
         <div class="buttons">
@@ -97,6 +105,7 @@
 
     <div class="player" id="player2">
         <input type="color" class="color-picker" onchange="changeBackgroundColor('player2', this.value)">
+        <span class="color-label">Colore sfondo</span>
         <h2 contenteditable="true">Giocatore 2</h2>
         <div class="counter" id="counter2">0</div>
         <div class="buttons">
