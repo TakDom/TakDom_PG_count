@@ -17,9 +17,6 @@
             height: 100vh;
             font-family: Arial, sans-serif;
             text-align: center;
-            justify-content: space-between; /* Cambiato per migliorare l'uso dello spazio */
-            align-items: center;
-            padding: 1px; /* Aggiunta di padding */
         }
 
         .players {
@@ -27,19 +24,18 @@
             width: 100%;
             flex-grow: 1;
             align-items: center;
+            flex-wrap: wrap; /* Per migliorare la visualizzazione su dispositivi mobili */
         }
 
         .player {
-            flex: 1;
+            flex: 1 1 50%;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             border: 2px solid black;
             padding: 20px;
-            position: relative;
             height: 100%;
-            margin: 10px; /* Aggiunta di margine */
         }
 
         .color-picker {
