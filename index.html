@@ -17,13 +17,16 @@
             height: 100vh;
             font-family: Arial, sans-serif;
             text-align: center;
-            justify-content: center;
+            justify-content: space-between; /* Cambiato per migliorare l'uso dello spazio */
             align-items: center;
+            padding: 20px; /* Aggiunta di padding */
         }
 
         .players {
             display: flex;
             width: 100%;
+            flex-grow: 1;
+            align-items: center;
         }
 
         .player {
@@ -35,6 +38,8 @@
             border: 2px solid black;
             padding: 20px;
             position: relative;
+            height: 100%;
+            margin: 10px; /* Aggiunta di margine */
         }
 
         .color-picker {
@@ -53,14 +58,6 @@
             top: 10px;
             left: 50px;
             font-size: 14px;
-        }
-
-        .player:first-child {
-            background-color: #ffffff;
-        }
-
-        .player:last-child {
-            background-color: #ffffff;
         }
 
         .counter {
