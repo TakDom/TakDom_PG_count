@@ -29,23 +29,15 @@
             position: relative;
         }
 
-        .color-btn {
+        .color-picker {
             position: absolute;
             top: 10px;
             left: 10px;
             width: 30px;
             height: 30px;
             cursor: pointer;
-            background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
             border: none;
             border-radius: 50%;
-        }
-
-        .color-picker {
-            display: none;
-            position: absolute;
-            top: 40px;
-            left: 10px;
         }
 
         .player:first-child {
@@ -95,7 +87,6 @@
 
     <div class="player" id="player1">
         <input type="color" class="color-picker" onchange="changeBackgroundColor('player1', this.value)">
-        <button class="color-btn" onclick="toggleColorPicker('player1')"></button>
         <h2 contenteditable="true">Giocatore 1</h2>
         <div class="counter" id="counter1">0</div>
         <div class="buttons">
@@ -106,7 +97,6 @@
 
     <div class="player" id="player2">
         <input type="color" class="color-picker" onchange="changeBackgroundColor('player2', this.value)">
-        <button class="color-btn" onclick="toggleColorPicker('player2')"></button>
         <h2 contenteditable="true">Giocatore 2</h2>
         <div class="counter" id="counter2">0</div>
         <div class="buttons">
@@ -123,11 +113,6 @@
             if (value < 0) value = 0;
             if (value > 150) value = 150;
             counter.textContent = value;
-        }
-
-        function toggleColorPicker(playerId) {
-            const colorPicker = document.querySelector(`#${playerId} .color-picker`);
-            colorPicker.style.display = colorPicker.style.display === 'block' ? 'none' : 'block';
         }
 
         function changeBackgroundColor(playerId, color) {
