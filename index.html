@@ -10,132 +10,53 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            -webkit-touch-callout: none;
-            -webkit-user-select: none;
-            -khtml-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
             user-select: none;
         }
-
+        
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
             width: 100vw;
             height: 100vh;
             background-color: white;
             position: relative;
-            touch-action: manipulation; /* Blocca lo zoom */
+            touch-action: manipulation;
         }
-
+        
         .background-selector {
             position: absolute;
             top: 1vh;
             left: 1vw;
         }
-
+        
         .color-picker {
             width: 30px;
             height: 30px;
             cursor: pointer;
-            border: none;
             border-radius: 50%;
-        }
-
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100vw;
-            height: 100vh;
-            text-align: center;
-            border-radius: 15px;
-            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
-            position: relative;
-        }
-
-        button {
-            font-size: 3.5vh;
-            padding: 2vh 4vw;
-            border: 1px solid black; /* Aggiunto bordo nero */
-            cursor: pointer;
-            border-radius: 10px;
-            font-weight: bold;
-            background: none; /* Trasparente per i bottoni senza azione */
-        }
-
-        .counter-group {
-            top: 10vh;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .counter-group button.counter {
-            top: 10vh;
-            font-size: 7vh;
-            margin: 0px;
-            border: none; /* Rimosso bordo nero */
-        }
-
-        .creature-kill {
-            top: 26vh;
-            width: 100%;
-            font-size: 3.5vh;
-            font-weight: bold;
-            background: transparent;
             border: none;
-            cursor: default;
         }
-
-        .creature-buttons {
-            top: 35vh;
+        
+        .counter-group, .creature-kill, .creature-buttons, .takdom, .wonder-label, .wonder-buttons {
+            position: absolute;
             width: 100%;
-            display: flex;
-            justify-content: center;
-            gap: 2vh;
         }
-
-        .takdom {
-            top: 50vh;
-            left: 50%;
+        
+        .counter-group { top: 10vh; display: flex; justify-content: center; align-items: center; }
+        .creature-kill { top: 26vh; font-size: 3.5vh; font-weight: bold; border: none; background: transparent; }
+        .creature-buttons { top: 35vh; display: flex; justify-content: center; gap: 2vh; }
+        .takdom { top: 50vh; left: 50%; transform: translateX(-50%); font-size: 3.5vh; padding: 2vh 4vw; border: 1px solid black; border-radius: 10px; font-weight: bold; background-color: #e890ea; }
+        .wonder-label { top: 70vh; font-size: 3.5vh; font-weight: bold; border: none; background: transparent; }
+        .wonder-buttons { top: 85vh; display: flex; justify-content: center; gap: 2vh; }
+        
+        button {
             font-size: 3.5vh;
             padding: 2vh 4vw;
             border: 1px solid black;
             cursor: pointer;
             border-radius: 10px;
             font-weight: bold;
+            background: none;
         }
-
-        .wonder-label {
-            top: 70vh;
-            width: 100%;
-            font-size: 3.5vh;
-            font-weight: bold;
-            background: transparent;
-            border: none;
-            cursor: default;
-        }
-
-        .wonder-buttons {
-            top: 85vh;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            gap: 2vh;
-        }
-
-        .common { background-color: lightgray; }
-        .rare { background-color: gray; color: black; }
-        .divine { background-color: #d4af37; color: black; }
-        .takdom { background-color: #e890ea; color: black; }
-        .wonder { background-color: lightgray; }
-
-        .plus { background-color: green; color: black; }
-        .minus { background-color: red; color: black; }
-
+        
         .victory {
             display: none;
             flex-direction: column;
@@ -146,12 +67,12 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: rgba(0, 0, 0, 0);
             color: white;
             font-size: 6vh;
             text-align: center;
         }
-
+        
         .victory button {
             margin-top: 2vh;
             padding: 2vh 4vw;
@@ -165,56 +86,45 @@
     </style>
 </head>
 <body>
-
     <div class="background-selector">
         <input type="color" class="color-picker" id="colorPicker" onchange="changeBackgroundColor(this.value)">
     </div>
-
     <div class="container">
-        <div class="buttons-group counter-group">
+        <div class="counter-group">
             <button class="minus" onclick="addPG(-1)">-</button>
             <button class="counter" id="counter">0</button>
             <button class="plus" onclick="addPG(1)">+</button>
         </div>
-
         <button class="creature-kill">Uccisione creatura:</button>
-        <div class="buttons-group creature-buttons">
+        <div class="creature-buttons">
             <button class="common" onclick="addPG(4)">Comune</button>
             <button class="rare" onclick="addPG(6)">Rara</button>
             <button class="divine" onclick="addPG(8)">Divina</button>
         </div>
-
         <button class="takdom" onclick="addPG(10)">TakDom</button>
-
         <button class="wonder-label">N° Meraviglie:</button>
-        <div class="buttons-group wonder-buttons">
+        <div class="wonder-buttons">
             <button class="wonder" onclick="addPG(2)">1</button>
             <button class="wonder" onclick="addPG(4)">2</button>
             <button class="wonder" onclick="addPG(7)">3</button>
         </div>
     </div>
-
     <div class="victory" id="victory-screen">
         <h2>VITTORIA!</h2>
         <button onclick="location.reload()">Nuova partita</button>
     </div>
-
     <script>
         let counter = 0;
-
         function addPG(points) {
             counter = Math.max(0, Math.min(150, counter + points));
             document.getElementById("counter").textContent = counter;
-
             if (counter === 150) {
                 document.getElementById("victory-screen").style.display = "flex";
             }
         }
-
         function changeBackgroundColor(color) {
-            document.querySelector('.container').style.backgroundColor = color;  // Cambia il colore dello sfondo del container
+            document.querySelector('.container').style.backgroundColor = color;
         }
     </script>
-
 </body>
 </html>
