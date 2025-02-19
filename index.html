@@ -25,6 +25,17 @@
             position: absolute;
             top: 10px;
             left: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .color-picker {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            border: none;
+            border-radius: 50%;
         }
 
         .container {
@@ -120,6 +131,7 @@
             <option value="light">Chiaro</option>
             <option value="dark">Scuro</option>
         </select>
+        <input type="color" class="color-picker" id="colorPicker" onchange="changeBackgroundColor(this.value)">
     </div>
 
     <div class="container">
@@ -149,7 +161,7 @@
 
     <div class="victory" id="victory-screen">
         <h1>VITTORIA!</h1>
-        <button onclick="location.reload()">Ricarica</button>
+        <button onclick="location.reload()">Nuova partita</button>
     </div>
 
     <script>
@@ -167,6 +179,10 @@
         function changeBackground() {
             let selected = document.getElementById("background").value;
             document.body.style.background = selected === "dark" ? "#333" : "radial-gradient(circle, #f8f8f8, #dcdcdc)";
+        }
+
+        function changeBackgroundColor(color) {
+            document.body.style.backgroundColor = color;
         }
     </script>
 
