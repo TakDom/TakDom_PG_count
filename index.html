@@ -47,8 +47,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 100vw;
-            height: 100vh;
+            width: 98vw;
+            height: 98vh;
             text-align: center;
             border-radius: 15px;
             box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
@@ -57,8 +57,8 @@
 
         button {
             font-size: 3.5vh;
-            padding: 2vh 3vw;
-            border: none;
+            padding: 2vh 4vw;
+            border: 1px solid black; /* Aggiunto bordo nero */
             cursor: pointer;
             border-radius: 10px;
             font-weight: bold;
@@ -75,7 +75,7 @@
 
         .counter-group button.counter {
             font-size: 7vh;
-            margin: 0px;
+            margin: 0 15px;
         }
 
         .creature-kill {
@@ -84,7 +84,7 @@
             font-size: 3.5vh;
             font-weight: bold;
             background: transparent;
-            border: 1px;
+            border: none;
             cursor: default;
         }
 
@@ -99,6 +99,7 @@
         .takdom {
             top: 50%;
             left: 50%;
+            transform: translateX(-50%);
             font-size: 3.5vh;
             padding: 2vh 4vw;
             border: none;
@@ -193,7 +194,7 @@
     </div>
 
     <div class="victory" id="victory-screen">
-        <h2>VITTORIA!</h2>
+        <button class="counter">VITTORIA!</button>
         <button onclick="location.reload()">Nuova partita</button>
     </div>
 
