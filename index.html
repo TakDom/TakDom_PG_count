@@ -133,8 +133,12 @@
             top: 10%;
             width: 100%;
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
             align-items: center;
+        }
+
+        .counter-group h1 {
+            padding: 0 15px;
         }
 
         .creature-kill {
@@ -150,7 +154,7 @@
         .takdom {
             top: 50%;
             left: 50%;
-            
+            transform: translateX(-50%);
         }
 
         .wonder-label {
@@ -205,6 +209,12 @@
         function addPG(points) {
             counter = Math.max(0, Math.min(150, counter + points));
             document.getElementById("counter").textContent = counter;
+
+            // Calcola la larghezza del numero e aggiorna il padding
+            const counterWidth = document.getElementById("counter").offsetWidth;
+            const buttonPadding = 15 + counterWidth / 2;
+            document.querySelector('.minus').style.marginRight = `${buttonPadding}px`;
+            document.querySelector('.plus').style.marginLeft = `${buttonPadding}px`;
 
             if (counter === 150) {
                 document.getElementById("victory-screen").style.display = "flex";
