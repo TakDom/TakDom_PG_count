@@ -58,11 +58,17 @@
             top: 10%;
         }
 
-        .counter-group button,
-        .counter-group h1 {
-            flex: 1;
+        .counter-group button {
             font-size: 7vh;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            flex: 1;
             margin: 0 5vw;
+        }
+
+        #counter {
+            font-size: 7vh;
             background: transparent;
             border: none;
             cursor: default;
@@ -107,6 +113,7 @@
             left: 50%;
             transform: translateX(-50%);
             white-space: nowrap; /* Mantiene la scritta ferma */
+            transition: transform 0.2s ease-in-out;
         }
 
         .wonder-label {
@@ -133,7 +140,6 @@
             cursor: pointer;
             border-radius: 10px;
             font-weight: bold;
-            transition: transform 0.2s ease-in-out;
             background: none; /* Trasparente per i bottoni senza azione */
         }
 
@@ -142,14 +148,14 @@
         }
 
         .common { background-color: lightgray; }
-        .rare { background-color: gray; color: white; }
+        .rare { background-color: gray; color: black; }
         .divine { background-color: #d4af37; color: black; }
-        .takdom { background-color: blue; color: white; padding: 3vh 6vw; font-size: 4vh; transition: none; } /* Mantiene la scritta ferma */
+        .takdom { background-color: #e094f5; color: black; transition: transform 0.2s ease-in-out; } /* Mantiene la scritta ferma e ha la transizione */
 
         .wonder { background-color: lightgray; }
 
-        .plus { background-color: green; color: white; }
-        .minus { background-color: red; color: white; }
+        .plus { background-color: green; color: black; }
+        .minus { background-color: red; color: black; }
 
         .victory {
             display: none;
@@ -186,21 +192,21 @@
 
         <div class="counter-group">
             <button class="minus" onclick="addPG(-1)">-</button>
-            <h1 id="counter">0</h1>
+            <button id="counter">0</button>
             <button class="plus" onclick="addPG(1)">+</button>
         </div>
 
-        <button style="position: absolute; top: 25%; left: 50%; transform: translateX(-50%); background: transparent; border: none; cursor: default;">Uccisione creatura:</button>
-        <div class="buttons-group creature-buttons" style="top: 35%;">
+        <button class="creature-kill">Uccisione creatura:</button>
+        <div class="buttons-group creature-buttons">
             <button class="common" onclick="addPG(4)">Comune</button>
             <button class="rare" onclick="addPG(6)">Rara</button>
             <button class="divine" onclick="addPG(8)">Divina</button>
         </div>
 
-        <button class="takdom takdom-button" style="top: 45%;" onclick="addPG(10)">TakDom</button>
+        <button class="takdom-button" onclick="addPG(10)">TakDom</button>
 
-        <button style="position: absolute; top: 70%; left: 50%; transform: translateX(-50%); background: transparent; border: none; cursor: default;">N° Meraviglie:</button>
-        <div class="buttons-group wonder-buttons" style="top: 85%;">
+        <button class="wonder-label">N° Meraviglie:</button>
+        <div class="buttons-group wonder-buttons">
             <button class="wonder" onclick="addPG(2)">1</button>
             <button class="wonder" onclick="addPG(4)">2</button>
             <button class="wonder" onclick="addPG(7)">3</button>
