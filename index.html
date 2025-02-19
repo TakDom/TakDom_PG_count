@@ -18,6 +18,13 @@
             width: 100vw;
             height: 100vh;
             background: radial-gradient(circle, #f8f8f8, #dcdcdc);
+            position: relative;
+        }
+
+        .background-selector {
+            position: absolute;
+            top: 10px;
+            left: 10px;
         }
 
         .container {
@@ -77,9 +84,43 @@
         .plus { background-color: green; color: white; }
         .minus { background-color: red; color: white; }
 
+        .victory {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            font-size: 6vh;
+            text-align: center;
+        }
+
+        .victory button {
+            margin-top: 2vh;
+            padding: 2vh 4vw;
+            font-size: 4vh;
+            background-color: white;
+            color: black;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
+
+    <div class="background-selector">
+        <label for="background">Sfondo:</label>
+        <select id="background" onchange="changeBackground()">
+            <option value="light">Chiaro</option>
+            <option value="dark">Scuro</option>
+        </select>
+    </div>
 
     <div class="container">
         <h1 id="counter">0</h1>
@@ -106,12 +147,26 @@
         </div>
     </div>
 
+    <div class="victory" id="victory-screen">
+        <h1>VITTORIA!</h1>
+        <button onclick="location.reload()">Ricarica</button>
+    </div>
+
     <script>
         let counter = 0;
 
         function addPG(points) {
-            counter += points;
+            counter = Math.max(0, Math.min(150, counter + points));
             document.getElementById("counter").textContent = counter;
+
+            if (counter === 150) {
+                document.getElementById("victory-screen").style.display = "flex";
+            }
+        }
+
+        function changeBackground() {
+            let selected = document.getElementById("background").value;
+            document.body.style.background = selected === "dark" ? "#333" : "radial-gradient(circle, #f8f8f8, #dcdcdc)";
         }
     </script>
 
