@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contatore Giocatori</title>
+    <title>Contatore Giocatore</title>
     <style>
         * {
             margin: 0;
@@ -17,28 +17,18 @@
             height: 100vh;
             font-family: Arial, sans-serif;
             text-align: center;
-            justify-content: space-between; /* Per migliorare l'uso dello spazio */
+            justify-content: center;
             align-items: center;
-        }
-
-        .players {
-            display: flex;
-            width: 100%;
-            flex-grow: 1;
-            align-items: center;
-            flex-wrap: wrap; /* Per migliorare la visualizzazione su dispositivi mobili */
         }
 
         .player {
-            flex: 1 1 50%;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             border: 2px solid black;
-            padding: 10px; /* Ridotto padding */
-            height: 100%;
-            position: relative; /* Aggiunto per rendere visibile il selettore del colore */
+            padding: 20px;
+            position: relative;
         }
 
         .color-picker {
@@ -52,120 +42,60 @@
             border-radius: 50%;
         }
 
-        .color-label {
-            position: absolute;
-            top: 10px;
-            left: 50px;
-            font-size: 12px;
-        }
-
         .counter {
-            font-size: 80px; /* Ridotto font-size */
+            font-size: 80px;
             font-weight: bold;
         }
 
-        .buttons {
+        .buttons, .wonder-buttons, .kill-buttons {
             display: flex;
-            gap: 10px; /* Ridotto gap */
-            margin-top: 10px; /* Ridotto margin */
+            gap: 10px;
+            margin-top: 10px;
+            justify-content: center;
         }
 
         button {
-            font-size: 30px; /* Ridotto font-size */
-            padding: 5px 10px; /* Ridotto padding */
+            font-size: 20px;
+            padding: 5px 10px;
             border: none;
             cursor: pointer;
             border-radius: 10px;
             transition: 0.2s;
         }
 
-        .minus {
-            background-color: #dc3545;
-            color: white;
-        }
+        .minus { background-color: #dc3545; color: white; }
+        .plus { background-color: #28a745; color: white; }
+        .takdom { background-color: #007bff; color: white; }
 
-        .plus {
-            background-color: #28a745;
-            color: white;
-        }
+        button:active { transform: scale(0.9); }
 
-        .wonder-buttons {
-            display: flex;
-            gap: 5px; /* Ridotto gap */
-            margin-top: 10px; /* Ridotto margin */
-            justify-content: center;
-            align-items: center;
-        }
-
-        .wonder-buttons button {
-            font-size: 18px; /* Ridotto font-size */
-        }
-
-        button:active {
-            transform: scale(0.9);
-        }
-
-        h2 {
-            margin-bottom: 10px; /* Aggiunto per sollevare le scritte */
-        }
-
-        /* Media query per schermi piccoli */
-        @media (max-width: 600px) {
-            .players {
-                flex-direction: column;
-            }
-
-            .player {
-                width: 100%;
-                height: 50%; /* Assicura che i giocatori siano visibili entrambi nello schermo */
-            }
-        }
+        h3 { margin-top: 10px; cursor: pointer; text-decoration: underline; color: #007bff; }
     </style>
 </head>
 <body>
+    <div class="player" id="player1">
+        <input type="color" class="color-picker" onchange="changeBackgroundColor('player1', this.value)">
+        <div class="counter" id="counter1">0</div>
+        
+        <h3 onclick="updateCounter('counter1', 10)">TakDom</h3>
 
-    <div class="players">
-        <div class="player" id="player1">
-            <input type="color" class="color-picker" onchange="changeBackgroundColor('player1', this.value)">
-            <span class="color-label">Colore sfondo</span>
-            <h2 contenteditable="true">Giocatore 1</h2>
-            <div class="counter" id="counter1">0</div>
-            <div class="buttons">
-                <button class="minus" onclick="updateCounter('counter1', -1)">-</button>
-                <button class="plus" onclick="updateCounter('counter1', 1)">+</button>
-            </div>
-            <div class="wonder-buttons">
-                <span>N° Meraviglie:</span>
-                <button onclick="addWonderPoints('counter1', 1)">1</button>
-                <button onclick="addWonderPoints('counter1', 2)">2</button>
-                <button onclick="addWonderPoints('counter1', 3)">3</button>
-            </div>
+        <div class="kill-buttons">
+            <span>Uccisione creatura:</span>
+            <button onclick="addPoints('counter1', 4)">Comune</button>
+            <button onclick="addPoints('counter1', 6)">Rara</button>
+            <button onclick="addPoints('counter1', 8)">Divina</button>
         </div>
 
-        <div class="player" id="player2">
-            <input type="color" class="color-picker" onchange="changeBackgroundColor('player2', this.value)">
-            <span class="color-label">Colore sfondo</span>
-            <h2 contenteditable="true">Giocatore 2</h2>
-            <div class="counter" id="counter2">0</div>
-            <div class="buttons">
-                <button class="minus" onclick="updateCounter('counter2', -1)">-</button>
-                <button class="plus" onclick="updateCounter('counter2', 1)">+</button>
-            </div>
-            
-            <div class="MonsterKill">
-                <span>N° Creature:</span>
-                <button onclick="addWonderPoints('Comune', 4)">1</button>
-                <button onclick="addWonderPoints('Rara', 6)">2</button>
-                <button onclick="addWonderPoints('Divina', 8)">3</button>
-                <button onclick="addWonderPoints('TakDom', 10)">4</button>
-            </div>
-            
-            <div class="wonder-buttons">
-                <span>N° Meraviglie:</span>
-                <button onclick="addWonderPoints('counter2', 1)">1</button>
-                <button onclick="addWonderPoints('counter2', 2)">2</button>
-                <button onclick="addWonderPoints('counter2', 3)">3</button>
-            </div>
+        <div class="wonder-buttons">
+            <span>N° Meraviglie:</span>
+            <button onclick="addWonderPoints('counter1', 1)">1</button>
+            <button onclick="addWonderPoints('counter1', 2)">2</button>
+            <button onclick="addWonderPoints('counter1', 3)">3</button>
+        </div>
+
+        <div class="buttons">
+            <button class="minus" onclick="updateCounter('counter1', -1)">-</button>
+            <button class="plus" onclick="updateCounter('counter1', 1)">+</button>
         </div>
     </div>
 
@@ -180,15 +110,17 @@
         }
 
         function changeBackgroundColor(playerId, color) {
-            const player = document.getElementById(playerId);
-            player.style.backgroundColor = color;
+            document.getElementById(playerId).style.backgroundColor = color;
         }
 
         function addWonderPoints(id, number) {
             const points = number === 1 ? 2 : number === 2 ? 4 : 7;
             updateCounter(id, points);
         }
-    </script>
 
+        function addPoints(id, points) {
+            updateCounter(id, points);
+        }
+    </script>
 </body>
 </html>
