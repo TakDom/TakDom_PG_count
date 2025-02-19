@@ -3,12 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="touch-action" content="none">
     <title>TakDom</title>
     <style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
 
         body {
@@ -19,6 +26,7 @@
             height: 100vh;
             background-color: white;
             position: relative;
+            touch-action: manipulation; /* Blocca lo zoom */
         }
 
         .background-selector {
@@ -39,58 +47,83 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 100vw;
-            height: 100vh;
+            width: 98vw;
+            height: 98vh;
             text-align: center;
             border-radius: 15px;
             box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
             position: relative;
         }
 
-        h1 {
-            font-size: 7vh;
-            position: absolute;
-            top: 10%;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        p {
-            font-size: 3.5vh;
-            font-weight: bold;
-            position: absolute;
-            background: transparent;
-            border: none;
-            cursor: default;
-        }
-
-        .buttons-group {
-            display: flex;
-            justify-content: center;
-            gap: 2vh;
-            position: absolute;
-        }
-
-        .buttons-group.inline > * {
-            margin: 0 5px;
-        }
-
-        .minus, .plus {
-            font-size: 3.5vh;
-            padding: 2vh 2vw;
-            border: none;
-            cursor: pointer;
-            border-radius: 10px;
-            font-weight: bold;
-        }
-
-        .common, .rare, .divine, .takdom, .wonder {
+        button {
             font-size: 3.5vh;
             padding: 2vh 4vw;
             border: none;
             cursor: pointer;
             border-radius: 10px;
             font-weight: bold;
+            background: none; /* Trasparente per i bottoni senza azione */
+        }
+
+        .counter-group {
+            top: 10%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .counter-group button.counter {
+            font-size: 7vh;
+            margin: 0 15px;
+        }
+
+        .creature-kill {
+            top: 25%;
+            width: 100%;
+            font-size: 3.5vh;
+            font-weight: bold;
+            background: transparent;
+            border: none;
+            cursor: default;
+        }
+
+        .creature-buttons {
+            top: 35%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 2vh;
+        }
+
+        .takdom {
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 3.5vh;
+            padding: 2vh 4vw;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .wonder-label {
+            top: 70%;
+            width: 100%;
+            font-size: 3.5vh;
+            font-weight: bold;
+            background: transparent;
+            border: none;
+            cursor: default;
+        }
+
+        .wonder-buttons {
+            top: 85%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 2vh;
         }
 
         .common { background-color: lightgray; }
@@ -128,44 +161,6 @@
             font-weight: bold;
             cursor: pointer;
         }
-
-        .counter-group {
-            top: 10%;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .counter-group h1 {
-            padding: 0 15px;
-        }
-
-        .creature-kill {
-            top: 25%;
-            width: 100%;
-        }
-
-        .creature-buttons {
-            top: 35%;
-            width: 100%;
-        }
-
-        .takdom {
-            top: 50%;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .wonder-label {
-            top: 70%;
-            width: 100%;
-        }
-
-        .wonder-buttons {
-            top: 85%;
-            width: 100%;
-        }
     </style>
 </head>
 <body>
@@ -175,14 +170,14 @@
     </div>
 
     <div class="container">
-        <div class="buttons-group counter-group inline">
+        <div class="buttons-group counter-group">
             <button class="minus" onclick="addPG(-1)">-</button>
-            <h1 id="counter">0</h1>
+            <button class="counter" id="counter">0</button>
             <button class="plus" onclick="addPG(1)">+</button>
         </div>
 
-        <p class="creature-kill">Uccisione creatura:</p>
-        <div class="buttons-group creature-buttons inline">
+        <button class="creature-kill">Uccisione creatura:</button>
+        <div class="buttons-group creature-buttons">
             <button class="common" onclick="addPG(4)">Comune</button>
             <button class="rare" onclick="addPG(6)">Rara</button>
             <button class="divine" onclick="addPG(8)">Divina</button>
@@ -190,8 +185,8 @@
 
         <button class="takdom" onclick="addPG(10)">TakDom</button>
 
-        <p class="wonder-label">N° Meraviglie:</p>
-        <div class="buttons-group wonder-buttons inline">
+        <button class="wonder-label">N° Meraviglie:</button>
+        <div class="buttons-group wonder-buttons">
             <button class="wonder" onclick="addPG(2)">1</button>
             <button class="wonder" onclick="addPG(4)">2</button>
             <button class="wonder" onclick="addPG(7)">3</button>
@@ -199,7 +194,7 @@
     </div>
 
     <div class="victory" id="victory-screen">
-        <h1>VITTORIA!</h1>
+        <button class="counter">VITTORIA!</button>
         <button onclick="location.reload()">Nuova partita</button>
     </div>
 
@@ -209,12 +204,6 @@
         function addPG(points) {
             counter = Math.max(0, Math.min(150, counter + points));
             document.getElementById("counter").textContent = counter;
-
-            // Calcola la larghezza del numero e aggiorna il padding
-            const counterWidth = document.getElementById("counter").offsetWidth;
-            const buttonPadding = 15 + counterWidth / 2;
-            document.querySelector('.minus').style.marginRight = `${buttonPadding}px`;
-            document.querySelector('.plus').style.marginLeft = `${buttonPadding}px`;
 
             if (counter === 150) {
                 document.getElementById("victory-screen").style.display = "flex";
