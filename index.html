@@ -51,7 +51,7 @@
         box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
         position: relative;
         color: black;
-        background-color: white;
+        background-color: white !important;
     }
     button {
         font-size: 3.5vh;
@@ -109,6 +109,12 @@
         background-color: #D3D3D3;
         margin-top: 1vh;
     }
+    .special-actions {
+        display: flex;
+        justify-content: center;
+        gap: 1vh;
+        margin-top: 2vh;
+    }
     .wonder {
         background-color: silver;
     }
@@ -153,6 +159,10 @@
             <button class="divine" onclick="addPG(8)">Divina</button>
         </div>
         <button class="takdom" onclick="addPG(10)">TakDom</button>
+        <div class="special-actions">
+            <button class="draw-card" onclick="addPG(-5)">Pesca 1 carta</button>
+            <button class="second-roll" onclick="addPG(-10)">Secondo tiro</button>
+        </div>
         <button class="wonder-label">N° Meraviglie</button>
         <div class="wonder-buttons">
             <button class="wonder" onclick="addPG(2)">1</button>
