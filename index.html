@@ -51,6 +51,7 @@
         box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
         position: relative;
         color: black;
+        background-color: white !important;
     }
     button {
         font-size: 3.5vh;
@@ -60,14 +61,13 @@
         font-weight: bold;
         background: none;
         color: black;
+        border: 1px solid black; /* Aggiunto il bordo nero */
     }
     .minus {
         background-color: red;
-        border: 1px solid black;
     }
     .plus {
         background-color: green;
-        border: 1px solid black;
     }
     .counter {
         border: none;
@@ -86,7 +86,7 @@
         font-size: 3.5vh;
         font-weight: bold;
         padding: 1vh 2vw;
-        border: none;
+        border: none; /* Rimossi i bordi */
         background: none;
         color: black;
     }
@@ -98,24 +98,19 @@
     }
     .common {
         background-color: #808080;
-        color: black;
     }
     .rare {
         background-color: gold;
-        color: black;
     }
     .divine {
         background-color: #D8BFD8;
-        color: black;
     }
     .takdom {
         background-color: #D3D3D3;
         margin-top: 1vh;
-        color: black;
     }
     .wonder {
         background-color: silver;
-        color: black;
     }
     .victory {
         display: none;
@@ -133,9 +128,6 @@
         text-align: center;
     }
     .victory button {
-        margin-top: 2vh;
-        padding: 2vh 4vw;
-        font-size: 4vh;
         background-color: white;
         color: black;
         border-radius: 10px;
@@ -147,6 +139,7 @@
 <body>
     <div class="background-selector">
         <input type="color" class="color-picker" id="colorPicker">
+        <button onclick="changeBackgroundColor()">Cambia Sfondo</button>
     </div>
     <div class="container" id="container">
         <div class="counter-group">
@@ -181,9 +174,11 @@
                 document.getElementById("victory-screen").style.display = "flex";
             }
         }
-        document.getElementById("colorPicker").addEventListener("input", function() {
-            document.getElementById("container").style.backgroundColor = this.value;
-        });
+
+        function changeBackgroundColor() {
+            const color = document.getElementById("colorPicker").value;
+            document.getElementById("container").style.backgroundColor = color;
+        }
     </script>
 </body>
 </html>
