@@ -5,12 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TakDom</title>
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
             display: flex;
             justify-content: center;
             align-items: center;
+            width: 100vw;
             height: 100vh;
-            margin: 0;
             background-color: #f8f8f8;
         }
 
@@ -18,7 +24,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: min(50vw, 400px);
+            width: 90vw;
+            max-width: 500px;
             padding: 2vh;
             border: 2px solid black;
             background-color: white;
@@ -26,8 +33,8 @@
         }
 
         h1 {
-            font-size: min(6vw, 6vh);
-            margin: 0 0 2vh;
+            font-size: 6vh;
+            margin-bottom: 2vh;
         }
 
         .buttons-group {
@@ -35,10 +42,11 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 1vh;
+            margin-bottom: 2vh;
         }
 
         button {
-            font-size: min(4vw, 4vh);
+            font-size: 3vh;
             padding: 1vh 2vw;
             border: none;
             cursor: pointer;
@@ -58,29 +66,43 @@
 <body>
 
     <div class="container">
-        <h1>0</h1>
+        <h1 id="counter">0</h1>
 
         <p>Uccisione creatura:</p>
         <div class="buttons-group">
-            <button class="common">Comune</button>
-            <button class="rare">Rara</button>
-            <button class="divine">Divina</button>
+            <button class="common" onclick="addPoints(1)">Comune</button>
+            <button class="rare" onclick="addPoints(2)">Rara</button>
+            <button class="divine" onclick="addPoints(5)">Divina</button>
         </div>
 
-        <button class="takdom">TakDom</button>
+        <button class="takdom" onclick="addPoints(10)">TakDom</button>
 
         <p>N° Meraviglie:</p>
         <div class="buttons-group">
-            <button class="wonder">1</button>
-            <button class="wonder">2</button>
-            <button class="wonder">3</button>
+            <button class="wonder" onclick="setWonders(1)">1</button>
+            <button class="wonder" onclick="setWonders(2)">2</button>
+            <button class="wonder" onclick="setWonders(3)">3</button>
         </div>
 
         <div class="buttons-group">
-            <button class="minus">-</button>
-            <button class="plus">+</button>
+            <button class="minus" onclick="addPoints(-1)">-</button>
+            <button class="plus" onclick="addPoints(1)">+</button>
         </div>
     </div>
+
+    <script>
+        let counter = 0;
+
+        function addPoints(points) {
+            counter += points;
+            document.getElementById("counter").textContent = counter;
+        }
+
+        function setWonders(value) {
+            counter = value * 10;
+            document.getElementById("counter").textContent = counter;
+        }
+    </script>
 
 </body>
 </html>
