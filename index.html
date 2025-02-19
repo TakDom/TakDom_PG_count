@@ -52,6 +52,7 @@
             position: absolute;
             top: 10%;
             left: 50%;
+            transform: translateX(-50%);
         }
 
         p {
@@ -91,9 +92,10 @@
             cursor: pointer;
             border-radius: 10px;
             font-weight: bold;
+            transition: 0.2s ease-in-out;
         }
 
-        .minus:click, .plus:click, .common:click, .rare:click, .divine:click, .takdom:click, .wonder:click {
+        .minus:active, .plus:active, .common:active, .rare:active, .divine:active, .takdom:active, .wonder:active {
             transform: scale(1.1);
         }
 
@@ -149,7 +151,7 @@
         }
 
         .takdom {
-            top: 45%;
+            top: 50%;
             left: 50%;
             transform: translateX(-50%);
         }
