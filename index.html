@@ -17,7 +17,7 @@
             align-items: center;
             width: 100vw;
             height: 100vh;
-            background: radial-gradient(circle, #f8f8f8, #dcdcdc);
+            background-color: white;
             position: relative;
         }
 
@@ -25,9 +25,6 @@
             position: absolute;
             top: 10px;
             left: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
 
         .color-picker {
@@ -45,8 +42,6 @@
             width: 90vw;
             max-width: 500px;
             padding: 3vh;
-            border: 3px solid black;
-            background-color: white;
             text-align: center;
             border-radius: 15px;
             box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
@@ -121,24 +116,27 @@
             font-weight: bold;
             cursor: pointer;
         }
+
+        .buttons-group.inline > * {
+            margin: 0 5px;
+        }
     </style>
 </head>
 <body>
 
     <div class="background-selector">
-        <label for="background">Sfondo:</label>
-        <select id="background" onchange="changeBackground()">
-            <option value="light">Chiaro</option>
-            <option value="dark">Scuro</option>
-        </select>
         <input type="color" class="color-picker" id="colorPicker" onchange="changeBackgroundColor(this.value)">
     </div>
 
     <div class="container">
-        <h1 id="counter">0</h1>
+        <div class="buttons-group inline">
+            <button class="minus" onclick="addPG(-1)">-</button>
+            <h1 id="counter">0</h1>
+            <button class="plus" onclick="addPG(1)">+</button>
+        </div>
 
         <p>Uccisione creatura:</p>
-        <div class="buttons-group">
+        <div class="buttons-group inline">
             <button class="common" onclick="addPG(4)">Comune</button>
             <button class="rare" onclick="addPG(6)">Rara</button>
             <button class="divine" onclick="addPG(8)">Divina</button>
@@ -147,15 +145,10 @@
         <button class="takdom" onclick="addPG(10)">TakDom</button>
 
         <p>N° Meraviglie:</p>
-        <div class="buttons-group">
+        <div class="buttons-group inline">
             <button class="wonder" onclick="addPG(2)">1</button>
             <button class="wonder" onclick="addPG(4)">2</button>
             <button class="wonder" onclick="addPG(7)">3</button>
-        </div>
-
-        <div class="buttons-group">
-            <button class="minus" onclick="addPG(-1)">-</button>
-            <button class="plus" onclick="addPG(1)">+</button>
         </div>
     </div>
 
@@ -174,11 +167,6 @@
             if (counter === 150) {
                 document.getElementById("victory-screen").style.display = "flex";
             }
-        }
-
-        function changeBackground() {
-            let selected = document.getElementById("background").value;
-            document.body.style.background = selected === "dark" ? "#333" : "radial-gradient(circle, #f8f8f8, #dcdcdc)";
         }
 
         function changeBackgroundColor(color) {
