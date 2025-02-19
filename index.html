@@ -70,36 +70,31 @@
 
         <p>Uccisione creatura:</p>
         <div class="buttons-group">
-            <button class="common" onclick="addPoints(1)">Comune</button>
-            <button class="rare" onclick="addPoints(2)">Rara</button>
-            <button class="divine" onclick="addPoints(5)">Divina</button>
+            <button class="common" onclick="addPG(4)">Comune</button>
+            <button class="rare" onclick="addPG(6)">Rara</button>
+            <button class="divine" onclick="addPG(8)">Divina</button>
         </div>
 
-        <button class="takdom" onclick="addPoints(10)">TakDom</button>
+        <button class="takdom" onclick="addPG(10)">TakDom</button>
 
         <p>N° Meraviglie:</p>
         <div class="buttons-group">
-            <button class="wonder" onclick="setWonders(1)">1</button>
-            <button class="wonder" onclick="setWonders(2)">2</button>
-            <button class="wonder" onclick="setWonders(3)">3</button>
+            <button class="wonder" onclick="addPG(2)">1</button>
+            <button class="wonder" onclick="addPG(4)">2</button>
+            <button class="wonder" onclick="addPG(7)">3</button>
         </div>
 
         <div class="buttons-group">
-            <button class="minus" onclick="addPoints(-1)">-</button>
-            <button class="plus" onclick="addPoints(1)">+</button>
+            <button class="minus" onclick="addPG(-1)">-</button>
+            <button class="plus" onclick="addPG(1)">+</button>
         </div>
     </div>
 
     <script>
         let counter = 0;
 
-        function addPoints(points) {
+        function addPG(points) {
             counter += points;
-            document.getElementById("counter").textContent = counter;
-        }
-
-        function setWonders(value) {
-            counter = value * 10;
             document.getElementById("counter").textContent = counter;
         }
     </script>
