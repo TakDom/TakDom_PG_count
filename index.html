@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="touch-action" content="none">
     <title>TakDom</title>
     <style>
         * {
@@ -18,6 +19,7 @@
             width: 100vw;
             height: 100vh;
             background-color: white;
+            touch-action: manipulation; /* Blocca lo zoom */
         }
 
         .container {
@@ -25,7 +27,7 @@
             flex-direction: column;
             align-items: center;
             width: 98vw;
-            height: 98vh; /* Copre il 98% dei pixel rilevati */
+            height: 98vh;
             text-align: center;
             position: relative;
         }
@@ -43,13 +45,10 @@
 
         h1 {
             font-size: 7vh;
-            margin-bottom: 3vh;
-        }
-
-        p {
-            font-size: 3.5vh;
-            font-weight: bold;
-            margin-bottom: 2vh;
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .buttons-group {
@@ -60,8 +59,59 @@
             margin-bottom: 4vh;
         }
 
+        .buttons-group.inline {
+            position: absolute;
+        }
+
         .buttons-group.inline > * {
             margin: 0 5px;
+        }
+
+        .minus {
+            position: absolute;
+            top: 10%;
+            left: 30%;
+        }
+
+        .plus {
+            position: absolute;
+            top: 10%;
+            right: 30%;
+        }
+
+        .creature-kill {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .creature-buttons {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .takdom-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .wonder-label {
+            position: absolute;
+            top: 75%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .wonder-buttons {
+            position: absolute;
+            top: 90%;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         button {
@@ -127,17 +177,17 @@
             <button class="plus" onclick="addPG(1)">+</button>
         </div>
 
-        <p>Uccisione creatura:</p>
-        <div class="buttons-group inline">
+        <p class="creature-kill">Uccisione creatura:</p>
+        <div class="buttons-group creature-buttons">
             <button class="common" onclick="addPG(4)">Comune</button>
             <button class="rare" onclick="addPG(6)">Rara</button>
             <button class="divine" onclick="addPG(8)">Divina</button>
         </div>
 
-        <button class="takdom" onclick="addPG(10)">TakDom</button>
+        <button class="takdom takdom-button" onclick="addPG(10)">TakDom</button>
 
-        <p>N° Meraviglie:</p>
-        <div class="buttons-group inline">
+        <p class="wonder-label">N° Meraviglie:</p>
+        <div class="buttons-group wonder-buttons">
             <button class="wonder" onclick="addPG(2)">1</button>
             <button class="wonder" onclick="addPG(4)">2</button>
             <button class="wonder" onclick="addPG(7)">3</button>
