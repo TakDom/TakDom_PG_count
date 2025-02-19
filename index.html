@@ -77,6 +77,7 @@
             top: 10%;
             font-size: 7vh;
             margin: 0px;
+            border: none; /* Rimosso bordo nero */
         }
 
         .creature-kill {
@@ -212,7 +213,7 @@
         }
 
         function changeBackgroundColor(color) {
-            document.body.style.backgroundColor = color;
+            document.querySelector('.container').style.backgroundColor = color;  // Cambia il colore dello sfondo del container
         }
     </script>
 
