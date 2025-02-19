@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>TakDom</title>
     <style>
         * {
@@ -39,36 +39,44 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 90vw;
-            max-width: 500px;
-            padding: 3vh;
+            width: 98vw;
+            height: 98vh;
             text-align: center;
             border-radius: 15px;
             box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
         }
 
         h1 {
             font-size: 7vh;
-            margin-bottom: 3vh;
+            position: absolute;
+            top: 10%;
+            left: 50%;
         }
 
         p {
             font-size: 3.5vh;
             font-weight: bold;
-            margin-bottom: 2vh;
+            position: absolute;
+            background: transparent;
+            border: none;
+            cursor: default;
         }
 
         .buttons-group {
             display: flex;
-            flex-wrap: wrap;
             justify-content: center;
             gap: 2vh;
-            margin-bottom: 4vh;
+            position: absolute;
         }
 
-        button {
+        .buttons-group.inline > * {
+            margin: 0 5px;
+        }
+
+        .minus, .plus {
             font-size: 3.5vh;
-            padding: 2vh 4vw;
+            padding: 2vh 2vw;
             border: none;
             cursor: pointer;
             border-radius: 10px;
@@ -76,19 +84,27 @@
             transition: 0.2s ease-in-out;
         }
 
-        button:hover {
+        .common, .rare, .divine, .takdom, .wonder {
+            font-size: 3.5vh;
+            padding: 2vh 4vw;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .minus:click, .plus:click, .common:click, .rare:click, .divine:click, .takdom:click, .wonder:click {
             transform: scale(1.1);
         }
 
         .common { background-color: lightgray; }
-        .rare { background-color: gray; color: white; }
+        .rare { background-color: gray; color: black; }
         .divine { background-color: #d4af37; color: black; }
-        .takdom { background-color: blue; color: white; padding: 3vh 6vw; font-size: 4vh; }
-
+        .takdom { background-color: #e890ea; color: black; }
         .wonder { background-color: lightgray; }
 
-        .plus { background-color: green; color: white; }
-        .minus { background-color: red; color: white; }
+        .plus { background-color: green; color: black; }
+        .minus { background-color: red; color: black; }
 
         .victory {
             display: none;
@@ -117,8 +133,35 @@
             cursor: pointer;
         }
 
-        .buttons-group.inline > * {
-            margin: 0 5px;
+        .counter-group {
+            top: 10%;
+            width: 100%;
+        }
+
+        .creature-kill {
+            top: 25%;
+            width: 100%;
+        }
+
+        .creature-buttons {
+            top: 35%;
+            width: 100%;
+        }
+
+        .takdom {
+            top: 45%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .wonder-label {
+            top: 70%;
+            width: 100%;
+        }
+
+        .wonder-buttons {
+            top: 85%;
+            width: 100%;
         }
     </style>
 </head>
@@ -129,14 +172,14 @@
     </div>
 
     <div class="container">
-        <div class="buttons-group inline">
+        <div class="buttons-group counter-group inline">
             <button class="minus" onclick="addPG(-1)">-</button>
             <h1 id="counter">0</h1>
             <button class="plus" onclick="addPG(1)">+</button>
         </div>
 
-        <p>Uccisione creatura:</p>
-        <div class="buttons-group inline">
+        <p class="creature-kill">Uccisione creatura:</p>
+        <div class="buttons-group creature-buttons inline">
             <button class="common" onclick="addPG(4)">Comune</button>
             <button class="rare" onclick="addPG(6)">Rara</button>
             <button class="divine" onclick="addPG(8)">Divina</button>
@@ -144,8 +187,8 @@
 
         <button class="takdom" onclick="addPG(10)">TakDom</button>
 
-        <p>N° Meraviglie:</p>
-        <div class="buttons-group inline">
+        <p class="wonder-label">N° Meraviglie:</p>
+        <div class="buttons-group wonder-buttons inline">
             <button class="wonder" onclick="addPG(2)">1</button>
             <button class="wonder" onclick="addPG(4)">2</button>
             <button class="wonder" onclick="addPG(7)">3</button>
