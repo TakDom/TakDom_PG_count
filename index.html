@@ -10,6 +10,12 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
 
         body {
@@ -27,20 +33,20 @@
             flex-direction: column;
             align-items: center;
             width: 98vw;
-            height: 90vh;
+            height: 98vh;
             text-align: center;
             position: relative;
         }
 
         .color-picker {
             position: absolute;
-            top: 8px;
-            left: 8px;
+            top: 10px;
+            left: 10px;
             width: 30px;
             height: 30px;
             cursor: pointer;
             border: none;
-            border-radius: 80%;
+            border-radius: 50%;
         }
 
         h1 {
@@ -55,47 +61,47 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 2vh;
-            margin-bottom: 4vh;
+            gap: 1vh;
         }
 
         .buttons-group.inline {
             position: absolute;
+            gap: 1vh;
         }
 
         .buttons-group.inline > * {
-            margin: 0 5px;
+            margin: 0 1vw;
         }
 
         .minus {
             position: absolute;
             top: 10%;
-            left: 50%;
+            left: 30%;
         }
 
         .plus {
             position: absolute;
             top: 10%;
-            left: 50%;
+            right: 30%;
         }
 
         .creature-kill {
             position: absolute;
-            top: 30%;
+            top: 25%;
             left: 50%;
             transform: translateX(-50%);
         }
 
         .creature-buttons {
             position: absolute;
-            top: 40%;
+            top: 35%;
             left: 50%;
             transform: translateX(-50%);
         }
 
         .takdom-button {
             position: absolute;
-            top: 50%;
+            top: 45%;
             left: 50%;
             transform: translateX(-50%);
         }
@@ -109,14 +115,14 @@
 
         .wonder-buttons {
             position: absolute;
-            top: 80%;
+            top: 85%;
             left: 50%;
             transform: translateX(-50%);
         }
 
         button {
             font-size: 3.5vh;
-            padding: 2vh 4vw;
+            padding: 1.5vh 3vw;
             border: none;
             cursor: pointer;
             border-radius: 10px;
@@ -171,23 +177,23 @@
     <div class="container">
         <input type="color" class="color-picker" id="colorPicker" onchange="changeBackgroundColor(this.value)">
 
-        <div class="buttons-group inline">
+        <div class="buttons-group inline" style="top: 10%;">
             <button class="minus" onclick="addPG(-1)">-</button>
             <h1 id="counter">0</h1>
             <button class="plus" onclick="addPG(1)">+</button>
         </div>
 
-        <p class="creature-kill">Uccisione creatura:</p>
-        <div class="buttons-group creature-buttons">
+        <p class="creature-kill" style="top: 25%;">Uccisione creatura:</p>
+        <div class="buttons-group creature-buttons" style="top: 35%;">
             <button class="common" onclick="addPG(4)">Comune</button>
             <button class="rare" onclick="addPG(6)">Rara</button>
             <button class="divine" onclick="addPG(8)">Divina</button>
         </div>
 
-        <button class="takdom takdom-button" onclick="addPG(10)">TakDom</button>
+        <button class="takdom takdom-button" style="top: 45%;" onclick="addPG(10)">TakDom</button>
 
-        <p class="wonder-label">N° Meraviglie:</p>
-        <div class="buttons-group wonder-buttons">
+        <p class="wonder-label" style="top: 70%;">N° Meraviglie:</p>
+        <div class="buttons-group wonder-buttons" style="top: 85%;">
             <button class="wonder" onclick="addPG(2)">1</button>
             <button class="wonder" onclick="addPG(4)">2</button>
             <button class="wonder" onclick="addPG(7)">3</button>
