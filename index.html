@@ -90,6 +90,7 @@
             top: 25%;
             left: 50%;
             transform: translateX(-50%);
+            white-space: nowrap; /* Blocca lo spostamento */
         }
 
         .creature-buttons {
@@ -104,7 +105,7 @@
             top: 45%;
             left: 50%;
             transform: translateX(-50%);
-            white-space: nowrap; /* Mantiene la scritta ferma */
+            white-space: nowrap; /* Blocca lo spostamento */
         }
 
         .wonder-label {
@@ -112,6 +113,7 @@
             top: 70%;
             left: 50%;
             transform: translateX(-50%);
+            white-space: nowrap; /* Blocca lo spostamento */
         }
 
         .wonder-buttons {
@@ -132,7 +134,7 @@
         }
 
         button:active {
-            transform: scale(1.1);
+            transform: scale(1.3); /* Aumenta l'area di ingrandimento */
         }
 
         .common { background-color: lightgray; }
