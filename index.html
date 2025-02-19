@@ -58,7 +58,12 @@
         font-weight: bold;
         background: none;
     }
-    .minus, .plus {
+    .minus {
+        background-color: red;
+        border: 1px solid black;
+    }
+    .plus {
+        background-color: green;
         border: 1px solid black;
     }
     .counter {
@@ -70,30 +75,37 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-top: 10vh;
+        margin-top: 5vh;
     }
     .creature-kill, .wonder-label {
-        margin-top: 4vh;
+        margin-top: 10vh;
         font-size: 3.5vh;
         font-weight: bold;
-        background: transparent;
-        border: 1px solid black;
         padding: 1vh 2vw;
+        border: none;
+        background: none;
     }
     .creature-buttons, .wonder-buttons {
         display: flex;
         justify-content: center;
-        gap: 2vh;
+        gap: 1vh;
         margin-top: 2vh;
     }
+    .common {
+        background-color: #808080;
+    }
+    .rare {
+        background-color: gold;
+    }
+    .divine {
+        background-color: #D8BFD8;
+    }
     .takdom {
-        margin-top: 4vh;
-        font-size: 3.5vh;
-        padding: 2vh 4vw;
-        border: 1px solid black;
-        border-radius: 10px;
-        font-weight: bold;
-        background-color: #e890ea;
+        background-color: #D3D3D3;
+        margin-top: 1vh;
+    }
+    .wonder {
+        background-color: silver;
     }
     .victory {
         display: none;
@@ -124,9 +136,9 @@
 </head>
 <body>
     <div class="background-selector">
-        <input type="color" class="color-picker" id="colorPicker" onchange="changeBackgroundColor()">
+        <input type="color" class="color-picker" id="colorPicker">
     </div>
-    <div class="container">
+    <div class="container" id="container">
         <div class="counter-group">
             <button class="minus" onclick="addPG(-1)">-</button>
             <button class="counter" id="counter">0</button>
@@ -159,10 +171,9 @@
                 document.getElementById("victory-screen").style.display = "flex";
             }
         }
-        function changeBackgroundColor() {
-            let color = document.getElementById("colorPicker").value;
-            document.querySelector('.container').style.backgroundColor = color;
-        }
+        document.getElementById("colorPicker").addEventListener("input", function() {
+            document.getElementById("container").style.backgroundColor = this.value;
+        });
     </script>
 </body>
 </html>
