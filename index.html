@@ -49,30 +49,12 @@
             border-radius: 50%;
         }
 
-        .counter-group {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%; /* Spaziatura uniforme */
+        h1 {
+            font-size: 7vh;
             position: absolute;
             top: 10%;
-        }
-
-        .counter-group button {
-            font-size: 7vh;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            flex: 1;
-            padding: 0 2vw;
-        }
-
-        #counter {
-            font-size: 7vh;
-            background: transparent;
-            border: none;
-            cursor: default;
-            padding: 0 10vw; /* Aggiunto per la spaziatura */
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .buttons-group {
@@ -91,14 +73,23 @@
             margin: 0 1vw;
         }
 
+        .minus {
+            position: absolute;
+            top: 10%;
+            left: 30%;
+        }
+
+        .plus {
+            position: absolute;
+            top: 10%;
+            right: 30%;
+        }
+
         .creature-kill {
             position: absolute;
             top: 25%;
             left: 50%;
             transform: translateX(-50%);
-            background: transparent;
-            border: none;
-            cursor: default;
         }
 
         .creature-buttons {
@@ -113,8 +104,6 @@
             top: 45%;
             left: 50%;
             transform: translateX(-50%);
-            white-space: nowrap; /* Mantiene la scritta ferma */
-            transition: transform 0.2s ease-in-out;
         }
 
         .wonder-label {
@@ -122,9 +111,6 @@
             top: 70%;
             left: 50%;
             transform: translateX(-50%);
-            background: transparent;
-            border: none;
-            cursor: default;
         }
 
         .wonder-buttons {
@@ -136,27 +122,27 @@
 
         button {
             font-size: 3.5vh;
-            padding: 1.5vh 2vw;
+            padding: 1.5vh 3vw;
             border: none;
             cursor: pointer;
             border-radius: 10px;
             font-weight: bold;
-            background: none; /* Trasparente per i bottoni senza azione */
+            transition: 0.2s ease-in-out;
         }
 
-        button:active {
-            transform: scale(1.1); /* Aumenta l'area di ingrandimento */
+        button:hover {
+            transform: scale(1.1);
         }
 
         .common { background-color: lightgray; }
-        .rare { background-color: gray; color: black; }
+        .rare { background-color: gray; color: white; }
         .divine { background-color: #d4af37; color: black; }
-        .takdom { background-color: #e094f5; color: black; }
+        .takdom { background-color: blue; color: white; padding: 3vh 6vw; font-size: 4vh; }
 
         .wonder { background-color: lightgray; }
 
-        .plus { background-color: green; color: black; }
-        .minus { background-color: red; color: black; }
+        .plus { background-color: green; color: white; }
+        .minus { background-color: red; color: white; }
 
         .victory {
             display: none;
@@ -191,23 +177,23 @@
     <div class="container">
         <input type="color" class="color-picker" id="colorPicker" onchange="changeBackgroundColor(this.value)">
 
-        <div class="counter-group">
+        <div class="buttons-group inline" style="top: 10%;">
             <button class="minus" onclick="addPG(-1)">-</button>
-            <button id="counter">0</button>
+            <h1 id="counter">0</h1>
             <button class="plus" onclick="addPG(1)">+</button>
         </div>
 
-        <button class="creature-kill">Uccisione creatura:</button>
-        <div class="buttons-group creature-buttons">
+        <p class="creature-kill" style="top: 25%;">Uccisione creatura:</p>
+        <div class="buttons-group creature-buttons" style="top: 35%;">
             <button class="common" onclick="addPG(4)">Comune</button>
             <button class="rare" onclick="addPG(6)">Rara</button>
             <button class="divine" onclick="addPG(8)">Divina</button>
         </div>
 
-        <button class="takdom-button" onclick="addPG(10)">TakDom</button>
+        <button class="takdom takdom-button" style="top: 45%;" onclick="addPG(10)">TakDom</button>
 
-        <button class="wonder-label">N° Meraviglie:</button>
-        <div class="buttons-group wonder-buttons">
+        <p class="wonder-label" style="top: 70%;">N° Meraviglie:</p>
+        <div class="buttons-group wonder-buttons" style="top: 85%;">
             <button class="wonder" onclick="addPG(2)">1</button>
             <button class="wonder" onclick="addPG(4)">2</button>
             <button class="wonder" onclick="addPG(7)">3</button>
