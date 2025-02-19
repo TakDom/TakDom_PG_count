@@ -43,16 +43,6 @@
         border: none;
         border-radius: 50%;
     }
-    .change-bg-button {
-        display: inline-block;
-        margin-top: 10px;
-        padding: 10px 20px;
-        background-color: #D3D3D3;
-        border: 2px solid black;
-        border-radius: 5px;
-        font-size: 16px;
-        cursor: pointer;
-    }
     .container {
         display: flex;
         flex-direction: column;
@@ -151,8 +141,7 @@
 </head>
 <body>
     <div class="background-selector">
-        <input type="color" class="color-picker" id="colorPicker">
-        <button class="change-bg-button" onclick="changeBackgroundColor()">Cambia Sfondo</button>
+        <input type="color" class="color-picker" id="colorPicker" onchange="changeBackgroundColor('container', this.value)">
     </div>
     <div class="container" id="container">
         <div class="counter-group">
@@ -188,9 +177,9 @@
             }
         }
 
-        function changeBackgroundColor() {
-            const color = document.getElementById("colorPicker").value;
-            document.getElementById("container").style.backgroundColor = color;
+        function changeBackgroundColor(playerId, color) {
+            const player = document.getElementById(playerId);
+            player.style.backgroundColor = color;
         }
     </script>
 </body>
