@@ -34,9 +34,6 @@
         left: 1vw;
     }
     .color-picker {
-        position: absolute;
-        top: 1vh;
-        left: 1vw;
         width: 30px;
         height: 30px;
         cursor: pointer;
@@ -54,7 +51,7 @@
         box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
         position: relative;
         color: black;
-        background-color: white !important;
+        background-color: white;
     }
     button {
         font-size: 3.5vh;
@@ -141,7 +138,7 @@
 </head>
 <body>
     <div class="background-selector">
-        <input type="color" class="color-picker" id="colorPicker" onchange="changeBackgroundColor('container', this.value)">
+        <input type="color" class="color-picker" id="colorPicker">
     </div>
     <div class="container" id="container">
         <div class="counter-group">
@@ -177,10 +174,9 @@
             }
         }
 
-        function changeBackgroundColor(playerId, color) {
-            const player = document.getElementById(playerId);
-            player.style.backgroundColor = color;
-        }
+        document.getElementById("colorPicker").addEventListener("input", function() {
+            document.getElementById("container").style.backgroundColor = this.value;
+        });
     </script>
 </body>
 </html>
