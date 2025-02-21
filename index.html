@@ -36,7 +36,7 @@
         <button onclick="location.reload()" style="background-color: white; color: black; border-radius: 10px; font-weight: bold; cursor: pointer;">Nuova partita</button>
     </div>
     <script>
-        let counter = 0;
+        let PG = 0;
         function addPG(points) {
             PG = Math.max(0, Math.min(150, PG + points));
             document.getElementById("PG").textContent = PG;
