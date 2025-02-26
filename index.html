@@ -7,7 +7,6 @@
     <title>TakDom</title>
 </head>
 
-
 <style>
     .counter-group {
         display: flex;
@@ -52,11 +51,11 @@
         <button class="plus button" onclick="addPG(1)">+</button>
     </div>
 
-    <div class="creature-buttons" style="display: flex; justify-content: center; gap: 1vh; margin-top: 1vh;">
-        <button class="comune" onclick="addPG(5)" style="background-color: #808080; font-size: 3.5vh; padding: 1.5vh 2vw; cursor: pointer; border-radius: 10px; font-weight: bold; background: none; color: black; border: 1px solid black;">Comune</button>
-        <button class="rara" onclick="addPG(10)" style="background-color: gold; font-size: 3.5vh; padding: 1.5vh 2vw; cursor: pointer; border-radius: 10px; font-weight: bold; background: none; color: black; border: 1px solid black;">Rara</button>
-        <button class="divina" onclick="addPG(15)" style="background-color: #D8BFD8; font-size: 3.5vh; padding: 1.5vh 2vw; cursor: pointer; border-radius: 10px; font-weight: bold; background: none; color: black; border: 1px solid black;">Divina</button>
-    </div>
+    
+    <button class="comune" onclick="addPG(5)" style="position: absolute; top: 30%; left: 2%; font-size: 3.5vh; font-weight: bold; padding: 1vh 2vw; border: none; background: none; color: black;">Comune</button>
+    <button class="rara" onclick="addPG(10)" style="position: absolute; top: 50%; left: 2%; font-size: 3.5vh; font-weight: bold; padding: 1vh 2vw; border: none; background: none; color: black;">Rara</button>
+    <button class="divina" onclick="addPG(15)" style="position: absolute; top: 70%; left: 2%; font-size: 3.5vh; font-weight: bold; padding: 1vh 2vw; border: none; background: none; color: black;">Divina</button>
+
     <button class="takdom" onclick="addPG(10)" style="background-color: #D3D3D3; margin-top: 4vh; font-size: 3.5vh; padding: 1.5vh 2vw; cursor: pointer; border-radius: 10px; font-weight: bold; background: none; color: black; border: 1px solid black;">TakDom</button>
     <div class="special-actions" style="display: flex; justify-content: center; gap: 1vh; margin-top: 7vh;">
         <button class="draw-card" onclick="addPG(-5)" style="font-size: 3.5vh; padding: 1.5vh 2vw; cursor: pointer; border-radius: 10px; font-weight: bold; background: none; color: black; border: 1px solid black;">Pesca 1 carta</button>
